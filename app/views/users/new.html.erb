@@ -1,0 +1,45 @@
+<% if @user.errors.any? %>
+  <div id="error">
+    <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this article from being saved:</h2>
+    <ul>
+    <% @user.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<%= form_with model: @user do |form| %>
+<%= form.label :username, "Username:" %>
+<%= form.text_field :username %><br><br>
+<%= form.label :password, "Password:" %>
+<%= form.password_field :password %><br><br>
+<%= form.label :email, "Email:" %>
+<%= form.email_field :email, placeholder: "email@example.com" %><br><br>
+<%= form.submit "Submit" %>
+<% end %>
+
+
+<%# form_tag("/users", method: "post") do %>
+<%# label_tag(:username, "Username:") %>
+<%# text_field_tag(:username) %>
+<%# <br><br> %>
+<%# label_tag(:password, "Password:") %>
+<%# password_field_tag(:password) %>
+<%# <br><br> %>
+<%# label_tag(:email, "Email:") %>
+<%# email_field_tag(:email) %>
+<%# <br><br> %>
+<%# <%= submit_tag("Submit")%>
+<%# <% end %>
+
+
+<%# <form action="/users" method="post" accept-charset="UTF-8">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="user[username]"><br><br>
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="user[password]"><br><br>
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="user[email]"><br><br>
+  <input type="submit" value="Submit">
+</form> %>
